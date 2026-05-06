@@ -1,4 +1,4 @@
-   **Career Intelligence Platform**
+   ****Career Intelligence Platform****
 
 Upload your resume · Paste a job description · Get an AI-powered match score with missing skills, course links, role recommendations, and a career roadmap.
 
