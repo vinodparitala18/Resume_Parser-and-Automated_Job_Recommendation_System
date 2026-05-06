@@ -19,7 +19,7 @@ from nlp_engine import (
     rank_suitable_roles, get_trending_skills, get_roadmap,
 )
 
-app = FastAPI(title="SkillSync API", version="2.0.0")
+app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 @app.get("/")
