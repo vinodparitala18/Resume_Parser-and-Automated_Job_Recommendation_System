@@ -22,6 +22,10 @@ from nlp_engine import (
 app = FastAPI(title="SkillSync API", version="2.0.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
+@app.get("/")
+def root():
+    return {"status": "running"}
+
 # API Routes
 CACHE_FILE = "analysis_cache.json"
 
