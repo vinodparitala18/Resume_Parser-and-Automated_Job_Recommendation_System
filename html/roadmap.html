@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Roadmap — SkillSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"> <!--<span class="brand-hex">⬡</span><span>SkillSync</span> --></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Analyze</a>
+        <a href="results.html" class="nav-link">Results</a>
+        <a href="roles.html" class="nav-link">Roles</a>
+        <a href="roadmap.html" class="nav-link active">Roadmap</a>
+        <a href="trending.html" class="nav-link">Trending</a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
+    </div>
+    <div class="nav-mobile-menu hidden" id="mobile-menu">
+      <a href="index.html" class="nav-link">Analyze</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="roles.html" class="nav-link">Roles</a>
+      <a href="roadmap.html" class="nav-link active">Roadmap</a>
+      <a href="trending.html" class="nav-link">Trending</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-heading" data-animate="fade-up">
+        <p class="page-label">Personalised Learning Path</p>
+        <h1 class="page-title">Career Roadmap</h1>
+        <p class="page-desc">Enter any IT role to get a phase-by-phase learning roadmap with skill requirements and hand-picked course resources.</p>
+      </div>
+
+      <div class="roadmap-search-bar" data-animate="fade-up">
+        <input type="text" id="role-input" class="roadmap-input-lg" placeholder="e.g. Data Scientist, ML Engineer, DevOps Engineer, Security Engineer…" />
+        <button class="btn-primary" id="generate-btn">Generate Roadmap →</button>
+      </div>
+
+      <div class="quick-roles" data-animate="fade-up">
+        <span class="quick-label">Quick select:</span>
+        <button class="quick-chip" data-role="Data Scientist">Data Scientist</button>
+        <button class="quick-chip" data-role="Machine Learning Engineer">ML Engineer</button>
+        <button class="quick-chip" data-role="Full Stack Developer">Full Stack</button>
+        <button class="quick-chip" data-role="Data Engineer">Data Engineer</button>
+        <button class="quick-chip" data-role="DevOps Engineer">DevOps</button>
+        <button class="quick-chip" data-role="Cloud Engineer">Cloud</button>
+        <button class="quick-chip" data-role="Security Engineer">Security</button>
+        <button class="quick-chip" data-role="Backend Developer">Backend</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loading -->
+  <div class="roadmap-loading hidden" id="roadmap-loading">
+    <div class="loading-ring"><div class="ring-segment"></div></div>
+    <p>Generating roadmap…</p>
+  </div>
+
+  <!-- Roadmap content -->
+  <section class="roadmap-content-section hidden" id="roadmap-content-section">
+    <div class="container">
+      <div class="roadmap-role-title" id="roadmap-role-title"></div>
+      <div class="roadmap-timeline" id="roadmap-timeline"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><!--<span class="brand-hex">⬡</span> SkillSync --></div>
+      <p>AI-powered resume intelligence · No data stored</p>
+      <p class="footer-copy">© 2025 SkillSync</p>
+    </div>
+  </footer>
+
+  <script src="/js/store.js"></script>
+  <script src="/js/roadmap.js"></script>
+</body>
+</html>

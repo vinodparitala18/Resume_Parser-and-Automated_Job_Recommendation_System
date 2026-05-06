@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Role Matches — SkillSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-hex">⬡</span> <!--<span>SkillSync</span> --></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Analyze</a>
+        <a href="results.html" class="nav-link">Results</a>
+        <a href="roles.html" class="nav-link active">Roles</a>
+        <a href="roadmap.html" class="nav-link">Roadmap</a>
+        <a href="trending.html" class="nav-link">Trending</a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
+    </div>
+    <div class="nav-mobile-menu hidden" id="mobile-menu">
+      <a href="index.html" class="nav-link">Analyze</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="roles.html" class="nav-link active">Roles</a>
+      <a href="roadmap.html" class="nav-link">Roadmap</a>
+      <a href="trending.html" class="nav-link">Trending</a>
+    </div>
+  </nav>
+
+  <div class="no-data-wrap hidden" id="no-data-wrap">
+    <div class="no-data-card">
+      <div class="no-data-icon">💼</div>
+      <h2>No analysis yet</h2>
+      <p>Run an analysis first to see your matched IT roles.</p>
+      <a href="index.html" class="btn-primary">Go Analyze →</a>
+    </div>
+  </div>
+
+  <div id="page-content" class="hidden">
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-heading" data-animate="fade-up">
+          <p class="page-label">Based on your skill profile</p>
+          <h1 class="page-title">Top IT Roles for You</h1>
+          <p class="page-desc">These roles are ranked by how well your existing skills match industry requirements. Click a role to generate its full career roadmap.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="roles-section-page">
+      <div class="container">
+        <div class="roles-ranked" id="roles-ranked"></div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><!--<span class="brand-hex">⬡</span> SkillSync --></div>
+      <p>AI-powered resume intelligence · No data stored</p>
+      <p class="footer-copy">© 2026 SkillSync</p>
+    </div>
+  </footer>
+
+  <script src="/js/store.js"></script>
+  <script src="/js/roles.js"></script>
+</body>
+</html>

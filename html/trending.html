@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trending Skills — SkillSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"> <!--<span class="brand-hex">⬡</span><span>SkillSync</span> --></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Analyze</a>
+        <a href="results.html" class="nav-link">Results</a>
+        <a href="roles.html" class="nav-link">Roles</a>
+        <a href="roadmap.html" class="nav-link">Roadmap</a>
+        <a href="trending.html" class="nav-link active">Trending</a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
+    </div>
+    <div class="nav-mobile-menu hidden" id="mobile-menu">
+      <a href="index.html" class="nav-link">Analyze</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="roles.html" class="nav-link">Roles</a>
+      <a href="roadmap.html" class="nav-link">Roadmap</a>
+      <a href="trending.html" class="nav-link active">Trending</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-heading" data-animate="fade-up">
+        <p class="page-label">LinkedIn & Job Market Data 2026</p>
+        <h1 class="page-title">Trending Skills</h1>
+        <p class="page-desc">Skills with the highest demand growth in the IT industry right now — personalised to your existing skill stack after analysis, or browse by technology below.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personalised section (if analysis done) -->
+  <section class="personalised-section" id="personalised-section">
+    <div class="container">
+      <div class="trending-tag-header" data-animate="fade-up">
+        <h2 class="section-title">📊 Personalised for Your Skills</h2>
+        <p class="section-sub" id="personalised-sub">Based on your analysed resume skill profile</p>
+      </div>
+      <div class="trending-cards-grid" id="personalised-grid"></div>
+    </div>
+  </section>
+
+  <!-- General trending -->
+  <section class="general-trending-section">
+    <div class="container">
+      <div class="trending-tag-header" data-animate="fade-up">
+        <h2 class="section-title">🔥 Most In-Demand Skills 2026</h2>
+        <p class="section-sub">The fastest-growing skills across the entire IT industry this year</p>
+      </div>
+      <div class="trending-cards-grid" id="general-grid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"> <!--<span class="brand-hex">⬡</span> SkillSync --></div>
+      <p>AI-powered resume intelligence · No data stored</p>
+      <p class="footer-copy">© 2026 SkillSync</p>
+    </div>
+  </footer>
+
+  <script src="/js/store.js"></script>
+  <script src="/js/trending.js"></script>
+</body>
+</html>

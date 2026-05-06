@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results — SkillSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-hex">⬡</span> <!--<span>SkillSync</span>-->
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Analyze</a>
+        <a href="results.html" class="nav-link active">Results</a>
+        <a href="roles.html" class="nav-link">Roles</a>
+        <a href="roadmap.html" class="nav-link">Roadmap</a>
+        <a href="trending.html" class="nav-link">Trending</a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
+    </div>
+    <div class="nav-mobile-menu hidden" id="mobile-menu">
+      <a href="index.html" class="nav-link">Analyze</a>
+      <a href="results.html" class="nav-link active">Results</a>
+      <a href="roles.html" class="nav-link">Roles</a>
+      <a href="roadmap.html" class="nav-link">Roadmap</a>
+      <a href="trending.html" class="nav-link">Trending</a>
+    </div>
+  </nav>
+
+  <!-- No data state -->
+  <div class="no-data-wrap hidden" id="no-data-wrap">
+    <div class="no-data-card">
+      <div class="no-data-icon">📭</div>
+      <h2>No analysis yet</h2>
+      <p>Upload your resume and paste a job description to get your results.</p>
+      <a href="index.html" class="btn-primary">Go Analyze →</a>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div id="page-content" class="hidden">
+
+    <!-- Score Hero -->
+    <section class="score-hero">
+      <div class="container">
+        <div class="page-heading" data-animate="fade-up">
+          <p class="page-label">JD Match Analysis</p>
+          <h1 class="page-title">Your Results</h1>
+        </div>
+        <div class="score-layout">
+          <!-- Ring -->
+          <div class="score-ring-panel" data-animate="slide-left">
+            <div class="ring-container">
+              <svg class="score-svg" viewBox="0 0 200 200">
+                <defs>
+                  <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C17B4E"/>
+                    <stop offset="100%" stop-color="#D4A0A0"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="85" class="ring-track"/>
+                <circle cx="100" cy="100" r="85" class="ring-progress" id="ring-progress"/>
+              </svg>
+              <div class="ring-center">
+                <span class="ring-score" id="ring-score">0%</span>
+                <span class="ring-label" id="ring-label">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score breakdown -->
+          <div class="score-details" data-animate="slide-right">
+            <h2 class="score-detail-heading">Score Breakdown</h2>
+            <div class="formula-box">
+              <code>Final Score = 0.5 × Semantic Similarity + 0.3 × Skill Match + 0.2 × Experience Relevance</code>
+            </div>
+            <div class="steps-grid" id="steps-grid">
+              <!-- Populated by JS -->
+            </div>
+            <div class="result-nav-buttons">
+              <a href="roles.html" class="btn-primary btn-sm">View Role Matches →</a>
+              <a href="roadmap.html" class="btn-secondary btn-sm">Career Roadmap</a>
+              <button class="btn-secondary btn-sm" id="download-pdf-btn">⬇ PDF Report</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Grid -->
+    <section class="skills-section">
+      <div class="container">
+        <h2 class="section-title" data-animate="fade-up">Skill Comparison</h2>
+        <div class="skills-3col">
+
+          <div class="skill-col card" data-animate="slide-left">
+            <div class="skill-col-header">
+              <div class="skill-col-dot dot-blue"></div>
+              <h3>Your Hard Skills</h3>
+            </div>
+            <div class="chip-cloud" id="r-hard-chips"></div>
+            <div class="skill-col-header mt20">
+              <div class="skill-col-dot dot-rose"></div>
+              <h3>Your Soft Skills</h3>
+            </div>
+            <div class="chip-cloud" id="r-soft-chips"></div>
+          </div>
+
+          <div class="skill-col card" data-animate="fade-up">
+            <div class="skill-col-header">
+              <div class="skill-col-dot dot-green"></div>
+              <h3>✓ Matched Skills</h3>
+            </div>
+            <div class="chip-cloud" id="matched-chips"></div>
+            <div class="skill-col-header mt20">
+              <div class="skill-col-dot dot-red"></div>
+              <h3>✗ Missing Skills</h3>
+            </div>
+            <div class="chip-cloud" id="missing-chips-top"></div>
+          </div>
+
+          <div class="skill-col card" data-animate="slide-right">
+            <div class="skill-col-header">
+              <div class="skill-col-dot dot-orange"></div>
+              <h3>JD Hard Skills</h3>
+            </div>
+            <div class="chip-cloud" id="jd-hard-chips"></div>
+            <div class="skill-col-header mt20">
+              <div class="skill-col-dot dot-rose"></div>
+              <h3>JD Soft Skills</h3>
+            </div>
+            <div class="chip-cloud" id="jd-soft-chips"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Missing Skills + Courses -->
+    <section class="missing-section" id="missing-section">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <h2 class="section-title">Skills Gap · Course Recommendations</h2>
+          <p class="section-sub">Every missing skill paired with the best courses to close the gap fast</p>
+        </div>
+        <div class="missing-grid" id="missing-grid"></div>
+      </div>
+    </section>
+
+  </div><!-- /page-content -->
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"> <!--<span class="brand-hex">⬡</span> SkillSync --></div>
+      <p>AI-powered resume intelligence · No data stored</p>
+      <p class="footer-copy">© 2026 SkillSync</p>
+    </div>
+  </footer>
+
+  <script src="/js/store.js"></script>
+  <script src="/js/results.js"></script>
+</body>
+</html>

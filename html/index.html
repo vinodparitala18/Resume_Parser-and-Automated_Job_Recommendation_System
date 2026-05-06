@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSync — Resume Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-hex">⬡</span>
+        <!--<span>SkillSync</span>-->
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Analyze</a>
+        <a href="results.html" class="nav-link" id="nav-results">Results</a>
+        <a href="roles.html" class="nav-link" id="nav-roles">Roles</a>
+        <a href="roadmap.html" class="nav-link" id="nav-roadmap">Roadmap</a>
+        <a href="trending.html" class="nav-link" id="nav-trending">Trending</a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobile-toggle">☰</button>
+    </div>
+    <div class="nav-mobile-menu hidden" id="mobile-menu">
+      <a href="index.html" class="nav-link">Analyze</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="roles.html" class="nav-link">Roles</a>
+      <a href="roadmap.html" class="nav-link">Roadmap</a>
+      <a href="trending.html" class="nav-link">Trending</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content" data-animate="fade-up">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+       Career Intelligence Platform
+      </div>
+      <h1 class="hero-title">
+        Match your resume<br>to any <em>job description</em>
+      </h1>
+      <p class="hero-sub">
+        Upload your resume and paste a job description. SkillSync extracts your skills using NLP,
+        computes semantic similarity with SentenceTransformer embeddings, and gives you a weighted score,
+        missing skills, course recommendations, and a full career roadmap.
+      </p>
+      <div class="hero-method">
+        <div class="method-step">
+          <span class="method-num">01</span>
+          <span class="method-text">SentenceTransformer semantic similarity</span>
+        </div>
+        <div class="method-arrow">→</div>
+        <div class="method-step">
+          <span class="method-num">02</span>
+          <span class="method-text">Exact skill overlap score</span>
+        </div>
+        <div class="method-arrow">→</div>
+        <div class="method-step">
+          <span class="method-num">03</span>
+          <span class="method-text">Combined semantic, skill, and experience relevance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPLOAD SECTION -->
+  <section class="upload-section">
+    <div class="container">
+      <div class="upload-grid">
+
+        <!-- Resume Card -->
+        <div class="card upload-card" data-animate="slide-left">
+          <div class="card-num">01</div>
+          <h3 class="card-title">Upload Resume</h3>
+          <p class="card-sub">PDF, DOCX, or TXT · Max 10 MB</p>
+          <div class="drop-zone" id="drop-zone">
+            <div class="drop-icon-wrap">
+              <div class="drop-icon">📄</div>
+            </div>
+            <p class="drop-primary">Drag & drop your resume</p>
+            <p class="drop-secondary">or</p>
+            <label class="btn-outline" for="resume-file">Browse file</label>
+            <input type="file" id="resume-file" accept=".pdf,.docx,.doc,.txt" hidden />
+          </div>
+          <div class="file-confirmed hidden" id="file-confirmed">
+            <div class="file-conf-icon">✓</div>
+            <div class="file-conf-info">
+              <p class="file-conf-name" id="file-conf-name">file.pdf</p>
+              <p class="file-conf-size" id="file-conf-size">—</p>
+            </div>
+            <button class="file-remove" id="file-remove" title="Remove">✕</button>
+          </div>
+        </div>
+
+        <!-- JD Card -->
+        <div class="card jd-card" data-animate="slide-right">
+          <div class="card-num">02</div>
+          <h3 class="card-title">Paste Job Description</h3>
+          <p class="card-sub">Copy the full JD for accurate results</p>
+          <textarea id="jd-input" class="jd-textarea"
+            placeholder="We are looking for a Senior Machine Learning Engineer with expertise in Python, TensorFlow, Docker, and Kubernetes. You will design and deploy production ML models at scale. Strong communication and leadership skills required…"></textarea>
+          <div class="jd-footer">
+            <span class="char-count" id="char-count">0 characters</span>
+            <button class="clear-jd" id="clear-jd">Clear</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Analyze Button -->
+      <div class="analyze-wrap" data-animate="fade-up">
+        <button class="btn-analyze" id="analyze-btn">
+          <span class="analyze-btn-text">Analyze Match</span>
+          <span class="analyze-btn-arrow">→</span>
+        </button>
+        <p class="analyze-note">Results in ~2 seconds · No data stored · Free forever</p>
+      </div>
+
+      <!-- Loading -->
+      <div class="loading-wrap hidden" id="loading-wrap">
+        <div class="loading-card">
+          <div class="loading-ring">
+            <div class="ring-segment"></div>
+          </div>
+          <div class="loading-steps">
+            <div class="l-step active" id="ls-1">
+              <span class="l-step-dot"></span>
+              <span>Extracting resume text…</span>
+            </div>
+            <div class="l-step" id="ls-2">
+              <span class="l-step-dot"></span>
+              <span>Running NLP skill detection…</span>
+            </div>
+            <div class="l-step" id="ls-3">
+              <span class="l-step-dot"></span>
+              <span>Computing semantic similarity…</span>
+            </div>
+            <div class="l-step" id="ls-4">
+              <span class="l-step-dot"></span>
+              <span>Calculating weighted final score…</span>
+            </div>
+            <div class="l-step" id="ls-5">
+              <span class="l-step-dot"></span>
+              <span>Ranking career paths…</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="error-wrap hidden" id="error-wrap">
+        <div class="error-card">
+          <span class="error-icon">⚠</span>
+          <div>
+            <p class="error-title">Analysis failed</p>
+            <p class="error-msg" id="error-msg">Please check the backend is running on port 8000.</p>
+          </div>
+          <button class="error-close" id="error-close">✕</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <section class="features-strip">
+    <div class="container features-grid">
+      <div class="feature-item" data-animate="fade-up" style="--delay:0s">
+        <span class="feature-icon">🎯</span>
+        <h4>Weighted Score</h4>
+        <p>Token-based semantic similarity combined with exact skill matching for accurate role fit assessment</p>
+      </div>
+      <div class="feature-item" data-animate="fade-up" style="--delay:.1s">
+        <span class="feature-icon">📚</span>
+        <h4>Course Links</h4>
+        <p>Every missing skill paired with Udemy & Coursera recommendations</p>
+      </div>
+      <div class="feature-item" data-animate="fade-up" style="--delay:.2s">
+        <span class="feature-icon">💼</span>
+        <h4>Role Matching</h4>
+        <p>Top 5 IT roles matched to your exact skill profile with salary data</p>
+      </div>
+      <div class="feature-item" data-animate="fade-up" style="--delay:.3s">
+        <span class="feature-icon">🗺</span>
+        <h4>Career Roadmap</h4>
+        <p>Phase-by-phase learning path for any IT role with resource links</p>
+      </div>
+      <div class="feature-item" data-animate="fade-up" style="--delay:.4s">
+        <span class="feature-icon">📈</span>
+        <h4>Trending Skills</h4>
+        <p>LinkedIn-trending skills based on your tech stack with demand data</p>
+      </div>
+      <div class="feature-item" data-animate="fade-up" style="--delay:.5s">
+        <span class="feature-icon">📥</span>
+        <h4>PDF Report</h4>
+        <p>Download a complete branded analysis report for your records</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><span class="brand-hex">⬡ <!--</span> SkillSync</div>-->
+      <p>AI-powered resume intelligence · FastAPI + NLP backend · No data stored</p>
+      <p class="footer-copy">© 2026 SkillSync · For career guidance purposes</p>
+    </div>
+  </footer>
+
+  <script src="/js/store.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

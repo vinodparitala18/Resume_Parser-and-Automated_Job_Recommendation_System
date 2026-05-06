@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".pycache_tmp"
+		},
+		{
+			"path": ".venv"
+		},
+		{
+			"path": "__pycache__"
+		}
+	]
+}

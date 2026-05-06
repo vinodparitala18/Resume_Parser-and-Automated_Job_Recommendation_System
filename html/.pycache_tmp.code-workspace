@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "../.pycache_tmp"
+		},
+		{
+			"path": "../backend"
+		},
+		{
+			"path": "../css"
+		},
+		{
+			"path": "../data"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../js"
+		}
+	]
+}
